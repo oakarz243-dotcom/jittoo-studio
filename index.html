@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0b10" />
+  <title>JITTOO — Creative Studio</title>
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+<div id="app" class="app">
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">J</span><div><strong>JITTOO</strong><small>CREATIVE STUDIO</small></div></div>
+    <div class="doc-actions">
+      <button id="newBtn" class="btn ghost">New</button><button id="openBtn" class="btn ghost">Open</button><button id="saveBtn" class="btn ghost">Save</button>
+      <input id="fileInput" type="file" accept="image/*,.json,application/json" hidden />
+    </div>
+    <div class="top-actions"><button id="undoBtn" class="icon-btn" title="Undo">↶</button><button id="redoBtn" class="icon-btn" title="Redo">↷</button><button id="exportBtn" class="btn primary">Export</button></div>
+  </header>
+  <div class="workspace">
+    <aside class="toolbar" aria-label="Tools">
+      <button class="tool active" data-tool="select">↖<span>Select</span></button>
+      <button class="tool" data-tool="image">▧<span>Photo</span></button>
+      <button class="tool" data-tool="text">T<span>Text</span></button>
+      <button class="tool" data-tool="sticker">☺<span>Sticker</span></button>
+      <button class="tool" data-tool="shape">◇<span>Shape</span></button>
+      <button class="tool" data-tool="draw">✎<span>Draw</span></button>
+      <button class="tool" data-tool="crop">⌗<span>Crop</span></button>
+      <button class="tool" data-tool="ai">✦<span>AI</span></button>
+    </aside>
+    <main class="stage-area">
+      <div class="stagebar"><div id="statusText">Ready</div><div class="zoom"><button id="zoomOut">−</button><span id="zoomValue">100%</span><button id="zoomIn">+</button><button id="fitBtn">Fit</button></div></div>
+      <div id="stageViewport" class="stage-viewport">
+        <div id="canvasWrap" class="canvas-wrap"><canvas id="editorCanvas" width="1080" height="1080"></canvas><div id="selectionUI" class="selection-ui hidden"></div></div>
+        <div id="emptyState" class="empty-state"><div class="empty-icon">✦</div><h2>Start creating</h2><p>Drop an image here or choose a tool.</p><button id="uploadBtn" class="btn primary">Upload photo</button></div>
+      </div>
+    </main>
+    <aside class="rightbar">
+      <section class="panel layers-panel"><div class="panel-head"><h3>Layers</h3><div><button id="addLayerBtn" class="mini">+</button></div></div><div id="layersList" class="layers-list"></div></section>
+      <section class="panel inspector"><div class="panel-head"><h3 id="inspectorTitle">Design</h3></div><div id="inspectorBody" class="inspector-body"><p class="muted">Select an object to edit it.</p></div></section>
+    </aside>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <div id="modal" class="modal hidden"><div class="modal-card"><div class="modal-head"><h2 id="modalTitle">AI Studio</h2><button id="modalClose" class="icon-btn">×</button></div><div id="modalBody"></div></div></div>
+</div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
