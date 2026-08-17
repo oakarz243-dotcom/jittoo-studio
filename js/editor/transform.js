@@ -1,0 +1,6 @@
+export function clamp(n,min,max){return Math.min(max,Math.max(min,n))}
+export function normalizeRect(r){return {x:Number(r.x)||0,y:Number(r.y)||0,w:Math.max(1,Number(r.w)||1),h:Math.max(1,Number(r.h)||1),rotation:Number(r.rotation)||0}}
+export function resizeFromCorner(obj,corner,dx,dy,lockRatio=false){const r=normalizeRect(obj),ratio=r.w/r.h;let {x,y,w,h}=r;if(corner.includes('e'))w=Math.max(8,w+dx);if(corner.includes('s'))h=Math.max(8,h+dy);if(corner.includes('w')){const nw=Math.max(8,w-dx);x+=w-nw;w=nw}if(corner.includes('n')){const nh=Math.max(8,h-dy);y+=h-nh;h=nh}if(lockRatio){if(Math.abs(dx)>=Math.abs(dy))h=w/ratio;else w=h*ratio}return {...r,x,y,w,h}}
+export function rotatePoint(px,py,cx,cy,angle){const c=Math.cos(angle),s=Math.sin(angle),x=px-cx,y=py-cy;return {x:x*c-y*s+cx,y:x*s+y*c+cy}}
+export function snap(value,targets,tolerance=6){let best=value,dist=tolerance+1;for(const t of targets){const d=Math.abs(value-t);if(d<dist){dist=d;best=t}}return best}
+export function bounds(objects){if(!objects.length)return null;const xs=objects.map(o=>o.x),ys=objects.map(o=>o.y),xe=objects.map(o=>o.x+o.w),ye=objects.map(o=>o.y+o.h);const x=Math.min(...xs),y=Math.min(...ys);return {x,y,w:Math.max(...xe)-x,h:Math.max(...ye)-y}}
