@@ -1,10 +1,12 @@
 import { Editor } from './editor/editor.js';
+import { AdvancedInteraction } from './editor/advanced-interaction.js';
 import { AIStudio } from './ai/ai-ui.js';
 import { saveProject, loadProject } from './project/storage.js';
 import { exportCanvas } from './project/export.js';
 
 const $=s=>document.querySelector(s), canvas=$('#editorCanvas');
 const editor=new Editor(canvas,{onChange:render,onStatus:m=>$('#statusText').textContent=m});
+new AdvancedInteraction(editor,canvas);
 const ai=new AIStudio(editor,{modal:$('#modal'),title:$('#modalTitle'),body:$('#modalBody')});
 const toast=m=>{const e=$('#toast');e.textContent=m;e.classList.add('show');clearTimeout(window.__toast);window.__toast=setTimeout(()=>e.classList.remove('show'),1800)};
 function showCanvas(){ $('#emptyState').classList.add('hidden'); $('.canvas-wrap').style.display='block' }
