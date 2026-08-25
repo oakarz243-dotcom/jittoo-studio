@@ -1,31 +1,32 @@
-# JITTOO Creative Studio
+# VC Gold Collection — Mandalay
 
-Professional browser-first creative editor foundation.
+GitHub Pages အတွက် static jewelry shop website။
 
-## Included
-- Canvas editor core
-- Image, text, sticker and shape layers
-- Layer ordering and locking
-- Undo/redo
-- Drag and drop image import
-- Local JSON project save/load
-- PNG export helper
-- Responsive editor workspace
-- AI Studio UI with secure server endpoint integration
+## ပါဝင်တာ
+- `index.html` — Customer shop
+- `admin.html` — Admin panel
+- `styles.css` — Responsive luxury/gold UI
+- `app.js` — Product search/filter + product detail + Telegram order
+- `admin.js` — Add/Edit/Delete, image upload, color, stock
+- `assets/` — User ပေးထားတဲ့ jewelry display photos ၅ ပုံ
 
-## AI
-The browser calls `./api/ai/generate`. Provider API keys must remain on a server/API worker and must never be committed to this repository.
+## Admin
+- Username: `admin`
+- Password: `admin1234`
 
-Expected response:
-```json
-{"imageUrl":"https://..."}
-```
+## Contact
+- Telegram: https://t.me/vcafemm
+- Phone: 09458988516
+- Location: Mandalay, Myanmar
 
-## Structure
-- `css/` UI styling
-- `js/editor/` canvas/editor engine
-- `js/project/` persistence and export
-- `js/ai/` AI integration boundary
-- `js/data/` library data
+## အရေးကြီးတဲ့ technical limitation
+ဒီ build က backend မပါသေးတဲ့ GitHub Pages/static version ဖြစ်လို့ admin data ကို browser `localStorage` ထဲသိမ်းထားပါတယ်။ အဲဒါကြောင့် admin browser မှာထည့်လိုက်တဲ့ stock/item ကို အခြား customer ဖုန်းတွေက အလိုအလျောက်မမြင်နိုင်ပါ။
 
-This is intentionally modular so AI, authentication, cloud projects, Pro/Premium and billing can be moved into separate services later without rewriting the editor core.
+Live store အဖြစ်အသုံးပြုမယ်ဆိုရင် Firebase/Supabase (သို့) custom API backend ချိတ်ပြီး:
+1. Admin login ကို server-side authentication ပြုလုပ်ရန်
+2. Product image ကို storage ထဲ upload ရန်
+3. Product/color/stock ကို database ထဲသိမ်းရန်
+4. Customer တွေအားလုံးကို တူညီတဲ့ live stock ပြရန်
+5. Order တင်တဲ့အခါ Telegram bot/API သို့ notification ပို့ရန်
+
+ဆိုတဲ့ production version ကို ဆက်တည်ဆောက်ရပါမယ်။
