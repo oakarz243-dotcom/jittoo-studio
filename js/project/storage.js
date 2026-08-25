@@ -1,2 +1,0 @@
-export function saveProject(editor){const data={version:1,canvas:{width:editor.canvas.width,height:editor.canvas.height},layers:editor.layers};return new Blob([JSON.stringify(data,null,2)],{type:'application/json'})}
-export async function loadProject(editor,file){const data=JSON.parse(await file.text());if(!data?.layers)throw new Error('Invalid JITTOO project');editor.layers=data.layers;editor.selectedId=editor.layers.at(-1)?.id||null;editor.render()}
